@@ -15,4 +15,9 @@ public abstract class UserInputValidator {
         char firstLetter = userInput.charAt(0);
         return firstLetter >= '1' && firstLetter <= '9';
     }
+
+    public static boolean isValueMoreThanOrEqualToOneThousand(int value) {
+        return value >= 1000;
+    }
+
 }
