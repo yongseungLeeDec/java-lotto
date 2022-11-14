@@ -37,4 +37,17 @@ class LottoTest {
             assertThat(UserInputValidator.isUserInputValidNumberFormat(string)).isEqualTo(true);
         }
     }
+
+    @Test
+    void isFirstLetterBetweenOneAndNineTest() {
+        String[] validInputs = new String[]{"1000", "9999", "500", "500", "500"};
+        for (String string : validInputs) {
+            assertThat(UserInputValidator.isFirstLetterBetweenOneAndNine(string)).isEqualTo(true);
+        }
+
+        String[] invalidInputs = new String[]{"0", "0100", "00000123", "+500", "-500"};
+        for (String string : invalidInputs) {
+            assertThat(UserInputValidator.isFirstLetterBetweenOneAndNine(string)).isEqualTo(false);
+        }
+    }
 }
