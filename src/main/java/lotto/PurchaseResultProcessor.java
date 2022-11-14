@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,6 +13,19 @@ public class PurchaseResultProcessor {
 
     public int getPurchasedAmount(int totalPrice) {
         return totalPrice / 1000;
+    }
+
+    public List<Lotto> getLottos(int purchasedAmount) {
+        ArrayList<Lotto> lottos = new ArrayList<>();
+        int count = 0;
+
+        while (count < purchasedAmount) {
+            Lotto lotto = issueNewLotto();
+            lottos.add(lotto);
+            count++;
+        }
+
+        return lottos;
     }
 
     private Lotto issueNewLotto() {
