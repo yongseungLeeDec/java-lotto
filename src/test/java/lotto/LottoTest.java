@@ -50,4 +50,17 @@ class LottoTest {
             assertThat(UserInputValidator.isFirstLetterBetweenOneAndNine(string)).isEqualTo(false);
         }
     }
+
+    @Test
+    void isValueMoreThanOrEqualToOneThousandTest() {
+        int[] validValues = new int[] {1000, 2000, 3000, 4000, 5000};
+        for (int value : validValues) {
+            assertThat(UserInputValidator.isValueMoreThanOrEqualToOneThousand(value)).isEqualTo(true);
+        }
+
+        int[] invalidValues = new int[] {-1000, 0, 500, 30};
+        for (int value : invalidValues) {
+            assertThat(UserInputValidator.isValueMoreThanOrEqualToOneThousand(value)).isEqualTo(false);
+        }
+    }
 }
