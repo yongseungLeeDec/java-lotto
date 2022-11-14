@@ -15,4 +15,18 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("[");
+        int index;
+        for (index = 0; index < this.numbers.size() - 1; ++index) {
+            stringBuilder.append(this.numbers.get(index)).append(", ");
+        }
+        stringBuilder.append(this.numbers.get(index)).append("]");
+
+        return stringBuilder.toString();
+    }
 }
