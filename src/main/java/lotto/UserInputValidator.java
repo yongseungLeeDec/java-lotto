@@ -20,4 +20,7 @@ public abstract class UserInputValidator {
         return value >= 1000;
     }
 
+    public static boolean isValueMultipleOfOneThousand(int value) {
+        return (value / 1000 >= 1) && (value % 1000 == 0);
+    }
 }
