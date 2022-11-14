@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,5 +24,17 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    // UserInput
+    @Test
+    void isUserInputValidNumberFormatTest() {
+        String[] invalidNumberFormatStrings = new String[]{"", "1,000", "1000.00", "30+00", "java", null};
+        for (String string : invalidNumberFormatStrings) {
+            assertThat(UserInputValidator.isUserInputValidNumberFormat(string)).isEqualTo(false);
+        }
+
+        String[] validNumberFormatStrings = new String[]{"1000", "9999", "00012340", "500", "0", "-500", "+500"};
+        for (String string : validNumberFormatStrings) {
+            assertThat(UserInputValidator.isUserInputValidNumberFormat(string)).isEqualTo(true);
+        }
+    }
 }
