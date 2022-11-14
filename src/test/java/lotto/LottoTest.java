@@ -26,6 +26,16 @@ class LottoTest {
 
     // UserInput
     @Test
+    void userInputValidator_IntegratedTest() {
+        assertThat(UserInputValidator.getUserTotalPriceInputValidationCode("1000")).isEqualTo(UserInputValidationCode.VALID_NUMBER);
+        assertThat(UserInputValidator.getUserTotalPriceInputValidationCode("3000")).isEqualTo(UserInputValidationCode.VALID_NUMBER);
+        assertThat(UserInputValidator.getUserTotalPriceInputValidationCode("500000")).isEqualTo(UserInputValidationCode.VALID_NUMBER);
+        assertThat(UserInputValidator.getUserTotalPriceInputValidationCode("01000")).isEqualTo(UserInputValidationCode.INVALID_NUMBER_FORMAT);
+        assertThat(UserInputValidator.getUserTotalPriceInputValidationCode("+000")).isEqualTo(UserInputValidationCode.INVALID_NUMBER_FORMAT);
+        assertThat(UserInputValidator.getUserTotalPriceInputValidationCode("100")).isEqualTo(UserInputValidationCode.INVALID_NUMBER);
+    }
+
+    @Test
     void isUserInputValidNumberFormatTest() {
         String[] invalidNumberFormatStrings = new String[]{"", "1,000", "1000.00", "30+00", "java", null};
         for (String string : invalidNumberFormatStrings) {
