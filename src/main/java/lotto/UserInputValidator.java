@@ -2,6 +2,19 @@ package lotto;
 
 public abstract class UserInputValidator {
 
+    public static UserInputValidationCode getUserTotalPriceInputValidationCode(String userInput) {
+        if (!isUserInputValidNumberFormat(userInput) || !isFirstLetterBetweenOneAndNine(userInput)) {
+            return UserInputValidationCode.INVALID_NUMBER_FORMAT;
+        }
+
+        int value = Integer.parseInt(userInput);
+        if (!isValueMoreThanOrEqualToOneThousand(value) || !isValueMultipleOfOneThousand(value)) {
+            return UserInputValidationCode.INVALID_NUMBER;
+        }
+
+        return UserInputValidationCode.VALID_NUMBER;
+    }
+
     public static boolean isUserInputValidNumberFormat(String userInput) {
         try {
             Integer.parseInt(userInput);
