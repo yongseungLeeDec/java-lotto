@@ -24,7 +24,7 @@ public class LottoRunner {
     }
 
     public void run() {
-
+        int totalPrice = getTotalPriceFromUser();
     }
 
     public int getTotalPriceFromUser() {
