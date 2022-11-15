@@ -17,12 +17,16 @@ public class LottoRunner {
     private final PurchaseResultDemonstrator purchaseResultDemonstrator;
     private final PurchaseResultProcessor purchaseResultProcessor;
     private final LottoNumberGetter lottoNumberGetter;
+    private final LottoResultEvaluator lottoResultEvaluator;
+    private final LottoResultDemonstrator lottoResultDemonstrator;
 
     private LottoRunner() {
         this.totalPriceGetter = new TotalPriceGetter();
         this.purchaseResultDemonstrator = new PurchaseResultDemonstrator();
         this.purchaseResultProcessor = new PurchaseResultProcessor();
         this.lottoNumberGetter = new LottoNumberGetter();
+        this.lottoResultEvaluator = new LottoResultEvaluator();
+        this.lottoResultDemonstrator = new LottoResultDemonstrator();
     }
 
     public static LottoRunner getLottoRunner() {
@@ -42,5 +46,10 @@ public class LottoRunner {
 
         LottoNumber lottoNumber = this.lottoNumberGetter.getLottoNumber();
         System.out.println();
+
+        LottoResult lottoResult = lottoResultEvaluator.evaluateLottoResult(lottoNumber, purchaseResult);
+        this.lottoResultDemonstrator.printLottoResult(lottoResult);
+        double profitRate = lottoResultEvaluator.calculateProfitRate(lottoResult, purchaseResult);
+        this.lottoResultDemonstrator.printProfitRate(profitRate);
     }
 }
