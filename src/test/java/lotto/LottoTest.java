@@ -1,9 +1,9 @@
 package lotto;
 
 import lotto.data.Lotto;
-import lotto.userinput.UserInputGetter;
-import lotto.userinput.UserInputValidationCode;
-import lotto.userinput.UserInputValidator;
+import lotto.input.UserInputGetter;
+import lotto.validation.code.UserInputValidationCode;
+import lotto.validation.UserInputValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
