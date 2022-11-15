@@ -28,4 +28,8 @@ public class WinningNumberValidator {
     private boolean isValidNumberFormat(String string) {
         return string.charAt(0) >= '1' && string.charAt(0) <= '9';
     }
+
+    public boolean hasNoDuplicateNumber(List<Integer> numbers) {
+        return numbers.stream().distinct().count() == numbers.size();
+    }
 }
