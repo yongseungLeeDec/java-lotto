@@ -65,4 +65,37 @@ class LottoNumberGetterTest {
                 () -> lottoNumberGetter.throwExceptionIfNotValidWinningNumbers(lottoNumberGetter.tokenizeWinningNumberInput(winningNumbers)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("사용자가 올바르지 않은 형식의 보너스 번호를 입력할 경우, 예외를 발생시킨다")
+    @Test
+    void throwExceptionIfNotValidBonusNumber_1() {
+        LottoNumberGetter lottoNumberGetter = new LottoNumberGetter();
+        List<Integer> winningNumbers = new ArrayList<>(List.of(1,2,3,4,5,6));
+        String bonusNumber = "bonus";
+        assertThatThrownBy(
+                () -> lottoNumberGetter.throwExceptionIfNotValidBonusNumber(bonusNumber, winningNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("사용자가 올바르지 않은 형식의 보너스 번호를 입력할 경우, 예외를 발생시킨다")
+    @Test
+    void throwExceptionIfNotValidBonusNumber_2() {
+        LottoNumberGetter lottoNumberGetter = new LottoNumberGetter();
+        List<Integer> winningNumbers = new ArrayList<>(List.of(1,2,3,4,5,6));
+        String bonusNumber = "4";
+        assertThatThrownBy(
+                () -> lottoNumberGetter.throwExceptionIfNotValidBonusNumber(bonusNumber, winningNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("사용자가 올바르지 않은 형식의 보너스 번호를 입력할 경우, 예외를 발생시킨다")
+    @Test
+    void throwExceptionIfNotValidBonusNumber_3() {
+        LottoNumberGetter lottoNumberGetter = new LottoNumberGetter();
+        List<Integer> winningNumbers = new ArrayList<>(List.of(1,2,3,4,5,6));
+        String bonusNumber = "46";
+        assertThatThrownBy(
+                () -> lottoNumberGetter.throwExceptionIfNotValidBonusNumber(bonusNumber, winningNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
