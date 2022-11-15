@@ -19,7 +19,7 @@ public class BonusNumberValidator {
         return BonusNumberValidationCode.VALID;
     }
 
-    public boolean isTokenNumber(String token) {
+    private boolean isTokenNumber(String token) {
         try {
             Integer.parseInt(token);
         } catch (NumberFormatException exception) {
@@ -28,15 +28,15 @@ public class BonusNumberValidator {
         return true;
     }
 
-    public boolean isNumberFormatValid(String token) {
+    private boolean isNumberFormatValid(String token) {
         return token.charAt(0) >= '1' && token.charAt(0) <= '9';
     }
 
-    public boolean isNumberInRange(int number) {
+    private boolean isNumberInRange(int number) {
         return number >= 1 && number <= 45;
     }
 
-    public boolean isNumberDistinctFromWinningNumbers(int number, List<Integer> winningNumbers) {
+    private boolean isNumberDistinctFromWinningNumbers(int number, List<Integer> winningNumbers) {
         return !winningNumbers.contains(number);
     }
 }

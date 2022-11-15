@@ -23,11 +23,11 @@ public class WinningNumberValidator {
         return WinningNumberValidationCode.VALID;
     }
 
-    public boolean hasExactlySixTokens(List<String> tokens) {
+    private boolean hasExactlySixTokens(List<String> tokens) {
         return tokens.size() == 6;
     }
 
-    public boolean hasNumberElementsOnly(List<String> tokens) {
+    private boolean hasNumberElementsOnly(List<String> tokens) {
         return tokens.stream().filter(this::isNumericExpression).count() == tokens.size();
     }
 
@@ -40,7 +40,7 @@ public class WinningNumberValidator {
         return true;
     }
 
-    public boolean hasValidNumberFormatElementsOnly(List<String> tokens) {
+    private boolean hasValidNumberFormatElementsOnly(List<String> tokens) {
         return tokens.stream().filter(this::isValidNumberFormat).count() == tokens.size();
     }
 
@@ -48,11 +48,11 @@ public class WinningNumberValidator {
         return string.charAt(0) >= '1' && string.charAt(0) <= '9';
     }
 
-    public boolean hasNoDuplicateNumber(List<Integer> numbers) {
+    private boolean hasNoDuplicateNumber(List<Integer> numbers) {
         return numbers.stream().distinct().count() == numbers.size();
     }
 
-    public boolean isEveryNumberInRange(List<Integer> numbers) {
+    private boolean isEveryNumberInRange(List<Integer> numbers) {
         return numbers.stream().filter(num -> num >= 1 && num <= 45).count() == numbers.size();
     }
 }
