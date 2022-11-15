@@ -1,6 +1,9 @@
 package lotto.lottonumber;
 
 
+import lotto.lottonumber.winningnumber.WinningNumberValidationCode;
+import lotto.lottonumber.winningnumber.WinningNumberValidator;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -11,8 +14,10 @@ public class LottoNumberGetter {
     private static final String PROMPT_FOR_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
     private static final String PROMPT_FOR_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
-    public LottoNumberGetter() {
+    private final WinningNumberValidator winningNumberValidator;
 
+    public LottoNumberGetter() {
+        this.winningNumberValidator = new WinningNumberValidator();
     }
 
     public void printPromptForWinningNumbers() {
@@ -40,5 +45,12 @@ public class LottoNumberGetter {
         }
 
         return tokens;
+    }
+
+    public void throwExceptionIfNotValidWinningNumbers(List<String> tokens) {
+        WinningNumberValidationCode result = this.winningNumberValidator.validateWinningNumber(tokens);
+        if (result != WinningNumberValidationCode.VALID) {
+            throw new IllegalArgumentException(result.getErrorMessage());
+        }
     }
 }
