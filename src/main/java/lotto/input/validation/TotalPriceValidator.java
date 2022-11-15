@@ -1,6 +1,6 @@
-package lotto.validation;
+package lotto.input.validation;
 
-import lotto.validation.code.TotalPriceValidationCode;
+import lotto.input.validation.code.TotalPriceValidationCode;
 
 public class TotalPriceValidator {
 

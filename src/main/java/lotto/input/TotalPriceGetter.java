@@ -1,7 +1,7 @@
 package lotto.input;
 
-import lotto.validation.TotalPriceValidator;
-import lotto.validation.code.TotalPriceValidationCode;
+import lotto.input.validation.TotalPriceValidator;
+import lotto.input.validation.code.TotalPriceValidationCode;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 

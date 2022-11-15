@@ -1,8 +1,8 @@
 package lotto;
 
 import lotto.input.TotalPriceGetter;
-import lotto.validation.TotalPriceValidator;
-import lotto.validation.code.TotalPriceValidationCode;
+import lotto.input.validation.TotalPriceValidator;
+import lotto.input.validation.code.TotalPriceValidationCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

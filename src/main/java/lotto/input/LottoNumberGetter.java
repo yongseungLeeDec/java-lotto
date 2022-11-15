@@ -3,10 +3,10 @@ package lotto.input;
 
 import lotto.data.Lotto;
 import lotto.data.LottoNumber;
-import lotto.validation.code.BonusNumberValidationCode;
-import lotto.validation.BonusNumberValidator;
-import lotto.validation.code.WinningNumberValidationCode;
-import lotto.validation.WinningNumberValidator;
+import lotto.input.validation.code.BonusNumberValidationCode;
+import lotto.input.validation.BonusNumberValidator;
+import lotto.input.validation.code.WinningNumberValidationCode;
+import lotto.input.validation.WinningNumberValidator;
 
 import java.util.ArrayList;
 import java.util.List;
