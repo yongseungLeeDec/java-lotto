@@ -1,20 +1,20 @@
 package lotto.validation;
 
-import lotto.validation.code.UserInputValidationCode;
+import lotto.validation.code.TotalPriceValidationCode;
 
-public class UserInputValidator {
+public class TotalPriceValidator {
 
-    public UserInputValidationCode getUserTotalPriceInputValidationCode(String userInput) {
+    public TotalPriceValidationCode getUserTotalPriceInputValidationCode(String userInput) {
         if (!isUserInputValidNumberFormat(userInput) || !isFirstLetterBetweenOneAndNine(userInput)) {
-            return UserInputValidationCode.INVALID_NUMBER_FORMAT;
+            return TotalPriceValidationCode.INVALID_NUMBER_FORMAT;
         }
 
         int value = Integer.parseInt(userInput);
         if (!isValueMoreThanOrEqualToOneThousand(value) || !isValueMultipleOfOneThousand(value)) {
-            return UserInputValidationCode.INVALID_NUMBER;
+            return TotalPriceValidationCode.INVALID_NUMBER;
         }
 
-        return UserInputValidationCode.VALID_NUMBER;
+        return TotalPriceValidationCode.VALID_NUMBER;
     }
 
     public boolean isUserInputValidNumberFormat(String userInput) {

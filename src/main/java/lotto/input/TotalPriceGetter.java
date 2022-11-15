@@ -1,17 +1,17 @@
 package lotto.input;
 
-import lotto.validation.UserInputValidator;
-import lotto.validation.code.UserInputValidationCode;
+import lotto.validation.TotalPriceValidator;
+import lotto.validation.code.TotalPriceValidationCode;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class UserInputGetter {
+public class TotalPriceGetter {
     private static final String PROMPT_TOTAL_PRICE = "구입금액을 입력해 주세요.";
 
-    private final UserInputValidator userInputValidator;
+    private final TotalPriceValidator totalPriceValidator;
 
-    public UserInputGetter() {
-        this.userInputValidator = new UserInputValidator();
+    public TotalPriceGetter() {
+        this.totalPriceValidator = new TotalPriceValidator();
     }
 
     public int getTotalPriceFromUser() {
@@ -31,8 +31,8 @@ public class UserInputGetter {
     }
 
     public void throwExceptionIfUserInputTotalPriceNotValid(String userInput) {
-        UserInputValidationCode result = this.userInputValidator.getUserTotalPriceInputValidationCode(userInput);
-        if (result != UserInputValidationCode.VALID_NUMBER) {
+        TotalPriceValidationCode result = this.totalPriceValidator.getUserTotalPriceInputValidationCode(userInput);
+        if (result != TotalPriceValidationCode.VALID_NUMBER) {
             throw new IllegalArgumentException(result.getErrorMessage());
         }
     }

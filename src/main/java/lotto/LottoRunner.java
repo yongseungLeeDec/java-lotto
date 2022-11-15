@@ -3,17 +3,17 @@ package lotto;
 import lotto.data.PurchaseResult;
 import lotto.output.demonstration.PurchaseResultDemonstrator;
 import lotto.output.calculation.PurchaseResultProcessor;
-import lotto.input.UserInputGetter;
+import lotto.input.TotalPriceGetter;
 
 public class LottoRunner {
     private static LottoRunner lottoRunner;
 
-    private final UserInputGetter userInputGetter;
+    private final TotalPriceGetter totalPriceGetter;
     private final PurchaseResultDemonstrator purchaseResultDemonstrator;
     private final PurchaseResultProcessor purchaseResultProcessor;
 
     private LottoRunner() {
-        this.userInputGetter = new UserInputGetter();
+        this.totalPriceGetter = new TotalPriceGetter();
         this.purchaseResultDemonstrator = new PurchaseResultDemonstrator();
         this.purchaseResultProcessor = new PurchaseResultProcessor();
     }
@@ -26,7 +26,7 @@ public class LottoRunner {
     }
 
     public void run() {
-        int totalPrice = this.userInputGetter.getTotalPriceFromUser();
+        int totalPrice = this.totalPriceGetter.getTotalPriceFromUser();
         System.out.println();
 
         PurchaseResult purchaseResult = this.purchaseResultProcessor.getPurchaseResult(totalPrice);
