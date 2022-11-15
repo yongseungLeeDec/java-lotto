@@ -14,4 +14,8 @@ public class BonusNumberValidator {
     public boolean isNumberFormatValid(String token) {
         return token.charAt(0) >= '1' && token.charAt(0) <= '9';
     }
+
+    public boolean isNumberInRange(int number) {
+        return number >= 1 && number <= 45;
+    }
 }
