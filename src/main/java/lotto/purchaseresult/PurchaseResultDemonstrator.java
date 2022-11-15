@@ -1,4 +1,7 @@
-package lotto;
+package lotto.purchaseresult;
+
+import lotto.data.Lotto;
+import lotto.data.PurchaseResult;
 
 import java.util.List;
 
