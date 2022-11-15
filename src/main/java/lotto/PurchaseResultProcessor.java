@@ -12,6 +12,13 @@ public class PurchaseResultProcessor {
     private static final int LOTTO_END_NUMBER_INCLUSIVE = 45;
     private static final int NUMBER_OF_PICKED_NUMBERS = 6;
 
+    public PurchaseResult getPurchaseResult(int totalPrice) {
+        int purchasedAmount = getPurchasedAmount(totalPrice);
+        List<Lotto> purchasedLottos = getLottos(purchasedAmount);
+
+        return new PurchaseResult(purchasedAmount, purchasedLottos);
+    }
+
     public int getPurchasedAmount(int totalPrice) {
         return totalPrice / LOTTO_UNIT_PRICE;
     }
