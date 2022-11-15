@@ -20,7 +20,7 @@ public class LottoResultEvaluator {
         return countsByWinningResult;
     }
 
-    public int LottoResultEvaluator(LottoNumber lottoNumber, Lotto purchasedLotto) {
+    public int countMatchingNumbers(LottoNumber lottoNumber, Lotto purchasedLotto) {
         List<Integer> winningNumbers = lottoNumber.getLotto().getNumbers();
         int bonusNumber = lottoNumber.getBonusNumber();
         List<Integer> numbers = purchasedLotto.getNumbers();
