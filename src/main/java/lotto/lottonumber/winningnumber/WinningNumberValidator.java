@@ -1,8 +1,25 @@
 package lotto.lottonumber.winningnumber;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinningNumberValidator {
+    public WinningNumberValidationCode validateWinningNumber(List<String> tokens) {
+        if (!hasExactlySixTokens(tokens)) {
+            return WinningNumberValidationCode.HAS_MORE_OR_LESS_THAN_SIX_TOKENS;
+        }
+        if (!hasNumberElementsOnly(tokens) || !hasValidNumberFormatElementsOnly(tokens)) {
+            return WinningNumberValidationCode.HAS_ILLEGAL_CHARACTERS;
+        }
+        List<Integer> numbers = tokens.stream().map(Integer::parseInt).collect(Collectors.toList());
+        if (!hasNoDuplicateNumber(numbers)) {
+            return WinningNumberValidationCode.DUPLICATE_NUMBER;
+        }
+        if (!isEveryNumberInRange(numbers)) {
+            return WinningNumberValidationCode.NUMBER_OUT_OF_RANGE;
+        }
+        return WinningNumberValidationCode.VALID;
+    }
 
     public boolean hasExactlySixTokens(List<String> tokens) {
         return tokens.size() == 6;
