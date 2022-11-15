@@ -19,6 +19,10 @@ public class Lotto {
         return numbers.size() == 6;
     }
 
+    public boolean isEveryNumberDistinct(List<Integer> numbers) {
+        return numbers.stream().distinct().count() == numbers.size();
+    }
+
     public List<Integer> getNumbers() {
         return this.numbers;
     }
