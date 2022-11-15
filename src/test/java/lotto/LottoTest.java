@@ -37,7 +37,7 @@ class LottoTest {
 
         for (String price : validTotalPrices) {
             System.setIn(new ByteArrayInputStream((price).getBytes()));
-            result.add(lottoRunner.getTotalPrice());
+            result.add(lottoRunner.getTotalPriceFromUser());
         }
 
         assertThat(result.size()).isEqualTo(6);
