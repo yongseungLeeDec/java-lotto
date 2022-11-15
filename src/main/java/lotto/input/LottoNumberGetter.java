@@ -60,7 +60,7 @@ public class LottoNumberGetter {
     }
 
     public List<String> tokenizeWinningNumberInput(String userInput) {
-        StringTokenizer tokenizer = new StringTokenizer(userInput, ",");
+        StringTokenizer tokenizer = new StringTokenizer(userInput, ", ");
         List<String> tokens = new ArrayList<>();
 
         while (tokenizer.hasMoreTokens()) {
