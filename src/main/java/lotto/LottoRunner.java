@@ -1,7 +1,6 @@
 package lotto;
 
 public class LottoRunner {
-    private static final String ERROR_PREFIX = "[ERROR] ";
     private static LottoRunner lottoRunner;
 
     private final UserInputGetter userInputGetter;
@@ -41,7 +40,7 @@ public class LottoRunner {
     public void throwExceptionIfUserInputTotalPriceNotValid(String userInput) {
         UserInputValidationCode result = this.userInputValidator.getUserTotalPriceInputValidationCode(userInput);
         if (result != UserInputValidationCode.VALID_NUMBER) {
-            throw new IllegalArgumentException(ERROR_PREFIX + result.getErrorMessage());
+            throw new IllegalArgumentException(result.getErrorMessage());
         }
     }
 }
