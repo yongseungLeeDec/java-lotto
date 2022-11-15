@@ -89,7 +89,7 @@ class LottoTest {
     @DisplayName("사용자가 올바른 형식의 구입 금액을 입력할 경우, 이를 정수로 변환한 값을 반환한다.")
     @Test
     void convertValidUserInputForTotalPriceToIntegerTest() {
-        LottoRunner lottoRunner = LottoRunner.getLottoRunner();
+        UserInputGetter userInputGetter = new UserInputGetter();
 
         String[] validTotalPrices = new String[]{"1000", "2000", "3000", "1000000", "500000", "35000"};
         List<Integer> result = new ArrayList<>();
@@ -97,7 +97,7 @@ class LottoTest {
 
         for (String price : validTotalPrices) {
             System.setIn(new ByteArrayInputStream((price).getBytes()));
-            result.add(lottoRunner.getTotalPriceFromUser());
+            result.add(userInputGetter.getTotalPriceFromUser());
         }
 
         assertThat(result.size()).isEqualTo(6);
@@ -128,12 +128,12 @@ class LottoTest {
     @DisplayName("입력된 구입 금액 문자열이 올바르지 않을 경우 예외가 발생한다.")
     @Test
     void userInputValidator_ExceptionTest() {
-        LottoRunner lottoRunner = LottoRunner.getLottoRunner();
-        assertThatThrownBy(() -> lottoRunner.throwExceptionIfUserInputTotalPriceNotValid("total price"))
+        UserInputGetter userInputGetter = new UserInputGetter();
+        assertThatThrownBy(() -> userInputGetter.throwExceptionIfUserInputTotalPriceNotValid("total price"))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> lottoRunner.throwExceptionIfUserInputTotalPriceNotValid("+000"))
+        assertThatThrownBy(() -> userInputGetter.throwExceptionIfUserInputTotalPriceNotValid("+000"))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> lottoRunner.throwExceptionIfUserInputTotalPriceNotValid("01000"))
+        assertThatThrownBy(() -> userInputGetter.throwExceptionIfUserInputTotalPriceNotValid("01000"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
