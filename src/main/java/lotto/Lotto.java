@@ -11,23 +11,6 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-
-    }
-
-    public boolean isNumbersSizeExactlySix(List<Integer> numbers) {
-        return numbers.size() == 6;
-    }
-
-    public boolean isEveryNumberDistinct(List<Integer> numbers) {
-        return numbers.stream().distinct().count() == numbers.size();
-    }
-
-    public boolean isEveryNumberInRange(List<Integer> numbers) {
-        List<Integer> filtered = numbers.stream().filter(num -> num >= 1 && num <= 45).collect(Collectors.toList());
-        return filtered.size() == 6;
-    }
-
     public List<Integer> getNumbers() {
         return this.numbers;
     }
@@ -44,5 +27,22 @@ public class Lotto {
         stringBuilder.append(this.numbers.get(index)).append("]");
 
         return stringBuilder.toString();
+    }
+
+    public static void validate(List<Integer> numbers) {
+
+    }
+
+    public static boolean isNumbersSizeExactlySix(List<Integer> numbers) {
+        return numbers.size() == 6;
+    }
+
+    public static boolean isEveryNumberDistinct(List<Integer> numbers) {
+        return numbers.stream().distinct().count() == numbers.size();
+    }
+
+    public static boolean isEveryNumberInRange(List<Integer> numbers) {
+        List<Integer> filtered = numbers.stream().filter(num -> num >= 1 && num <= 45).collect(Collectors.toList());
+        return filtered.size() == 6;
     }
 }
