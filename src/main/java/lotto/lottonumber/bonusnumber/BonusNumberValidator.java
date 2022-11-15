@@ -1,5 +1,7 @@
 package lotto.lottonumber.bonusnumber;
 
+import java.util.List;
+
 public class BonusNumberValidator {
 
     public boolean isTokenNumber(String token) {
@@ -17,5 +19,9 @@ public class BonusNumberValidator {
 
     public boolean isNumberInRange(int number) {
         return number >= 1 && number <= 45;
+    }
+
+    public boolean isNumberDistinctFromWinningNumbers(int number, List<Integer> winningNumbers) {
+        return !winningNumbers.contains(number);
     }
 }
