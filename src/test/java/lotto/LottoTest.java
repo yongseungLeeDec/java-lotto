@@ -41,6 +41,22 @@ class LottoTest {
         assertThat(Lotto.isNumbersSizeExactlySix(numbers)).isEqualTo(false);
     }
 
+    @DisplayName("로또 생성에 사용되는 번호에 중복되는 번호가 없는지 확인한다")
+    @Test
+    void isEveryNumberDistinct() {
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 5));
+        assertThat(Lotto.isEveryNumberDistinct(numbers)).isEqualTo(false);
+
+        numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5));
+        assertThat(Lotto.isEveryNumberDistinct(numbers)).isEqualTo(true);
+
+        numbers = new ArrayList<>(List.of(3, 45, 26, 28, 17, 9));
+        assertThat(Lotto.isEveryNumberDistinct(numbers)).isEqualTo(true);
+
+        numbers = new ArrayList<>(List.of(7, 2, 3, 4, 5, 45, 7));
+        assertThat(Lotto.isEveryNumberDistinct(numbers)).isEqualTo(false);
+    }
+
     @DisplayName("사용자가 올바른 형식의 구입 금액을 입력할 경우, 이를 정수로 변환한 값을 반환한다.")
     @Test
     void convertValidUserInputForTotalPriceToIntegerTest() {
