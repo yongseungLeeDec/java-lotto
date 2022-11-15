@@ -57,6 +57,22 @@ class LottoTest {
         assertThat(Lotto.isEveryNumberDistinct(numbers)).isEqualTo(false);
     }
 
+    @DisplayName("로또 생성에 사용되는 번호가 올바른 범위의 숫자인지 확인한다")
+    @Test
+    void isEveryNumberInRange() {
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 5));
+        assertThat(Lotto.isEveryNumberInRange(numbers)).isEqualTo(true);
+
+        numbers = new ArrayList<>(List.of(3, 45, 26, 28, 17, 9));
+        assertThat(Lotto.isEveryNumberInRange(numbers)).isEqualTo(true);
+
+        numbers = new ArrayList<>(List.of(7, 2, 3, 4, 5, 46, 7));
+        assertThat(Lotto.isEveryNumberInRange(numbers)).isEqualTo(false);
+
+        numbers = new ArrayList<>(List.of(7, 2, 3, 4, 5, 46, 0));
+        assertThat(Lotto.isEveryNumberInRange(numbers)).isEqualTo(false);
+    }
+
     @DisplayName("사용자가 올바른 형식의 구입 금액을 입력할 경우, 이를 정수로 변환한 값을 반환한다.")
     @Test
     void convertValidUserInputForTotalPriceToIntegerTest() {
