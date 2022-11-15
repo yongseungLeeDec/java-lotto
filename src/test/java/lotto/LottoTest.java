@@ -25,6 +25,24 @@ class LottoTest {
     }
 
     // UserInputValidator 테스트
+    @DisplayName("사용자가 입력한 구입금액 형식에 따라 올바른 검증결과 코드를 반환한다.")
+    @Test
+    void userInputValidator_IntegratedTest() {
+        UserInputValidator userInputValidator = new UserInputValidator();
+        assertThat(userInputValidator.getUserTotalPriceInputValidationCode("1000"))
+                .isEqualTo(UserInputValidationCode.VALID_NUMBER);
+        assertThat(userInputValidator.getUserTotalPriceInputValidationCode("3000"))
+                .isEqualTo(UserInputValidationCode.VALID_NUMBER);
+        assertThat(userInputValidator.getUserTotalPriceInputValidationCode("500000"))
+                .isEqualTo(UserInputValidationCode.VALID_NUMBER);
+        assertThat(userInputValidator.getUserTotalPriceInputValidationCode("01000"))
+                .isEqualTo(UserInputValidationCode.INVALID_NUMBER_FORMAT);
+        assertThat(userInputValidator.getUserTotalPriceInputValidationCode("+000"))
+                .isEqualTo(UserInputValidationCode.INVALID_NUMBER_FORMAT);
+        assertThat(userInputValidator.getUserTotalPriceInputValidationCode("100"))
+                .isEqualTo(UserInputValidationCode.INVALID_NUMBER);
+    }
+
     @Test
     void isUserInputValidNumberFormatTest() {
         UserInputValidator userInputValidator = new UserInputValidator();
