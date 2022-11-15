@@ -1,12 +1,12 @@
-package lotto.lottonumber;
+package lotto.input;
 
 
 import lotto.data.Lotto;
 import lotto.data.LottoNumber;
-import lotto.lottonumber.bonusnumber.BonusNumberValidationCode;
-import lotto.lottonumber.bonusnumber.BonusNumberValidator;
-import lotto.lottonumber.winningnumber.WinningNumberValidationCode;
-import lotto.lottonumber.winningnumber.WinningNumberValidator;
+import lotto.validation.code.BonusNumberValidationCode;
+import lotto.validation.BonusNumberValidator;
+import lotto.validation.code.WinningNumberValidationCode;
+import lotto.validation.WinningNumberValidator;
 
 import java.util.ArrayList;
 import java.util.List;

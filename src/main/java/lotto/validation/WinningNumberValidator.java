@@ -1,4 +1,6 @@
-package lotto.lottonumber.winningnumber;
+package lotto.validation;
+
+import lotto.validation.code.WinningNumberValidationCode;
 
 import java.util.List;
 import java.util.stream.Collectors;

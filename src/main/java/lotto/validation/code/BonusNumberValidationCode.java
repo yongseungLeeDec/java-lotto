@@ -1,4 +1,4 @@
-package lotto.lottonumber.bonusnumber;
+package lotto.validation.code;
 
 public enum BonusNumberValidationCode {
     INVALID_FORMAT("입력된 값이 올바른 보너스 숫자 형식이 아닙니다"),

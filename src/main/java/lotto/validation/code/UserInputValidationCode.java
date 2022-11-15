@@ -1,4 +1,4 @@
-package lotto.userinput;
+package lotto.validation.code;
 
 public enum UserInputValidationCode {
     INVALID_NUMBER_FORMAT("숫자 외 문자를 포함해서는 안 되며, 첫 번째 숫자가 0이 되어서는 안 됩니다."),

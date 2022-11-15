@@ -1,9 +1,9 @@
 package lotto;
 
 import lotto.data.PurchaseResult;
-import lotto.purchaseresult.PurchaseResultDemonstrator;
-import lotto.purchaseresult.PurchaseResultProcessor;
-import lotto.userinput.UserInputGetter;
+import lotto.output.demonstration.PurchaseResultDemonstrator;
+import lotto.output.calculation.PurchaseResultProcessor;
+import lotto.input.UserInputGetter;
 
 public class LottoRunner {
     private static LottoRunner lottoRunner;

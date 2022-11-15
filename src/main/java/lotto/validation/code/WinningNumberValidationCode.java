@@ -1,4 +1,4 @@
-package lotto.lottonumber.winningnumber;
+package lotto.validation.code;
 
 public enum WinningNumberValidationCode {
     HAS_MORE_OR_LESS_THAN_SIX_TOKENS("입력된 숫자(또는 단어)가 여섯 개 미만 또는 초과입니다."),

@@ -1,4 +1,7 @@
-package lotto.userinput;
+package lotto.input;
+
+import lotto.validation.UserInputValidator;
+import lotto.validation.code.UserInputValidationCode;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 

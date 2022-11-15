@@ -1,4 +1,4 @@
-package lotto.purchaseresult;
+package lotto.output.calculation;
 
 import lotto.data.Lotto;
 import lotto.data.PurchaseResult;

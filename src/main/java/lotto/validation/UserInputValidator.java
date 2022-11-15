@@ -1,6 +1,6 @@
-package lotto.userinput;
+package lotto.validation;
 
-import lotto.userinput.UserInputValidationCode;
+import lotto.validation.code.UserInputValidationCode;
 
 public class UserInputValidator {
 
