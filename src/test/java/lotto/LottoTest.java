@@ -3,6 +3,8 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,6 +24,26 @@ class LottoTest {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("사용자가 올바른 형식의 구입 금액을 입력할 경우, 이를 정수로 변환한 값을 반환한다.")
+    @Test
+    void convertValidUserInputForTotalPriceToIntegerTest() {
+        LottoRunner lottoRunner = LottoRunner.getLottoRunner();
+
+        String[] validTotalPrices = new String[]{"1000", "2000", "3000", "1000000", "500000", "35000"};
+        List<Integer> result = new ArrayList<>();
+        List<Integer> validResult = new ArrayList<>(List.of(1000, 2000, 3000, 1000000, 500000, 35000));
+
+        for (String price : validTotalPrices) {
+            System.setIn(new ByteArrayInputStream((price).getBytes()));
+            result.add(lottoRunner.getTotalPrice());
+        }
+
+        assertThat(result.size()).isEqualTo(6);
+        for (int i = 0; i < result.size(); i++) {
+            assertThat(result.get(i)).isEqualTo(validResult.get(i));
+        }
     }
 
     // UserInputValidator 테스트
