@@ -1,6 +1,10 @@
 package lotto.lottonumber;
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoNumberGetter {
@@ -25,5 +29,16 @@ public class LottoNumberGetter {
 
     public String getBonusNumberFromConsole() {
         return readLine();
+    }
+
+    public List<String> tokenizeWinningNumberInput(String userInput) {
+        StringTokenizer tokenizer = new StringTokenizer(userInput, ",");
+        List<String> tokens = new ArrayList<>();
+
+        while (tokenizer.hasMoreTokens()) {
+            tokens.add(tokenizer.nextToken());
+        }
+
+        return tokens;
     }
 }
