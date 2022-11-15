@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lotto {
+    private static final String INVALID_PARAMETER_FOR_NEW_INSTANCE = "로또 번호는 1부터 45 사이의 서로 다른 6개의 숫자여야 합니다.";
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -30,7 +32,9 @@ public class Lotto {
     }
 
     public static void validate(List<Integer> numbers) {
-
+        if (!isNumbersSizeExactlySix(numbers) || !isEveryNumberDistinct(numbers) || !isEveryNumberInRange(numbers)) {
+            throw new IllegalArgumentException(INVALID_PARAMETER_FOR_NEW_INSTANCE);
+        }
     }
 
     public static boolean isNumbersSizeExactlySix(List<Integer> numbers) {
