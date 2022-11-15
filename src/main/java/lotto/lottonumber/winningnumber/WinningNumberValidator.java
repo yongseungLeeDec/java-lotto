@@ -32,4 +32,8 @@ public class WinningNumberValidator {
     public boolean hasNoDuplicateNumber(List<Integer> numbers) {
         return numbers.stream().distinct().count() == numbers.size();
     }
+
+    public boolean isEveryNumberInRange(List<Integer> numbers) {
+        return numbers.stream().filter(num -> num >= 1 && num <= 45).count() == numbers.size();
+    }
 }
