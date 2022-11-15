@@ -23,6 +23,11 @@ public class Lotto {
         return numbers.stream().distinct().count() == numbers.size();
     }
 
+    public boolean isEveryNumberInRange(List<Integer> numbers) {
+        List<Integer> filtered = numbers.stream().filter(num -> num >= 1 && num <= 45).collect(Collectors.toList());
+        return filtered.size() == 6;
+    }
+
     public List<Integer> getNumbers() {
         return this.numbers;
     }
