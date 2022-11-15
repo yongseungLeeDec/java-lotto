@@ -43,7 +43,10 @@ public class PurchaseResultProcessor {
         List<Integer> randomNumbers = pickUniqueNumbersInRange(
                 LOTTO_START_NUMBER_INCLUSIVE, LOTTO_END_NUMBER_INCLUSIVE, NUMBER_OF_PICKED_NUMBERS
         );
-        Collections.sort(randomNumbers);
-        return new Lotto(randomNumbers);
+
+        List<Integer> sortedRandomNumbers = new ArrayList<>(randomNumbers);
+        Collections.sort(sortedRandomNumbers);
+
+        return new Lotto(sortedRandomNumbers);
     }
 }
