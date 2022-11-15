@@ -3,11 +3,26 @@ package lotto.output.calculation;
 import lotto.data.Lotto;
 import lotto.data.LottoNumber;
 import lotto.data.LottoResult;
+import lotto.data.PurchaseResult;
 
 import java.util.List;
 
 public class LottoResultEvaluator {
     private static final int NUMBER_TO_EXPRESS_FIVE_AND_BONUS_WIN = 7;
+
+    public LottoResult evaluateLottoResult(LottoNumber lottoNumber, PurchaseResult purchaseResult) {
+        List<Lotto> purchasedLottos = purchaseResult.getPurchasedLottos();
+
+        int[] winningResults = new int[purchaseResult.getPurchasedAmount()];
+
+        for (int i = 0; i < winningResults.length; i++) {
+            winningResults[i] = countMatchingNumbers(lottoNumber, purchasedLottos.get(i));
+        }
+
+        int[] countsByWinningResult = countLottosByWinningResult(winningResults);
+
+        return new LottoResult(countsByWinningResult);
+    }
 
     public int[] countLottosByWinningResult(int[] winningResults) {
         int[] countsByWinningResult = new int[8];
