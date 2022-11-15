@@ -8,6 +8,8 @@ import lotto.data.PurchaseResult;
 import java.util.List;
 
 public class LottoResultEvaluator {
+    private static final int LOTTO_UNIT_PRICE = 1000;
+    private static final int PROFIT_RATE_PRECISION = 1;
     private static final int NUMBER_TO_EXPRESS_FIVE_AND_BONUS_WIN = 7;
 
     public LottoResult evaluateLottoResult(LottoNumber lottoNumber, PurchaseResult purchaseResult) {
@@ -47,5 +49,17 @@ public class LottoResultEvaluator {
         }
 
         return matchCount;
+    }
+
+    public double calculateProfitRate(LottoResult lottoResult, PurchaseResult purchaseResult) {
+        double totalPrice = purchaseResult.getPurchasedAmount() * LOTTO_UNIT_PRICE;
+        double prize = lottoResult.getTotalPrizeAmount();
+
+        return getRoundedProfitRate(prize / totalPrice * 100, PROFIT_RATE_PRECISION);
+    }
+
+    private double getRoundedProfitRate(double value, int precision) {
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(value * scale) / scale;
     }
 }
