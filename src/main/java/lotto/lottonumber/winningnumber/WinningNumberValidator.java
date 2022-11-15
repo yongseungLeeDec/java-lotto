@@ -20,4 +20,12 @@ public class WinningNumberValidator {
         }
         return true;
     }
+
+    public boolean hasValidNumberFormatElementsOnly(List<String> tokens) {
+        return tokens.stream().filter(this::isValidNumberFormat).count() == tokens.size();
+    }
+
+    private boolean isValidNumberFormat(String string) {
+        return string.charAt(0) >= '1' && string.charAt(0) <= '9';
+    }
 }
