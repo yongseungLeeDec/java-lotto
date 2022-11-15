@@ -24,67 +24,65 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // UserInput
-    @Test
-    void userInputValidator_IntegratedTest() {
-        assertThat(UserInputValidator.getUserTotalPriceInputValidationCode("1000")).isEqualTo(UserInputValidationCode.VALID_NUMBER);
-        assertThat(UserInputValidator.getUserTotalPriceInputValidationCode("3000")).isEqualTo(UserInputValidationCode.VALID_NUMBER);
-        assertThat(UserInputValidator.getUserTotalPriceInputValidationCode("500000")).isEqualTo(UserInputValidationCode.VALID_NUMBER);
-        assertThat(UserInputValidator.getUserTotalPriceInputValidationCode("01000")).isEqualTo(UserInputValidationCode.INVALID_NUMBER_FORMAT);
-        assertThat(UserInputValidator.getUserTotalPriceInputValidationCode("+000")).isEqualTo(UserInputValidationCode.INVALID_NUMBER_FORMAT);
-        assertThat(UserInputValidator.getUserTotalPriceInputValidationCode("100")).isEqualTo(UserInputValidationCode.INVALID_NUMBER);
-    }
-
+    // UserInputValidator 테스트
     @Test
     void isUserInputValidNumberFormatTest() {
+        UserInputValidator userInputValidator = new UserInputValidator();
+
         String[] invalidNumberFormatStrings = new String[]{"", "1,000", "1000.00", "30+00", "java", null};
         for (String string : invalidNumberFormatStrings) {
-            assertThat(UserInputValidator.isUserInputValidNumberFormat(string)).isEqualTo(false);
+            assertThat(userInputValidator.isUserInputValidNumberFormat(string)).isEqualTo(false);
         }
 
         String[] validNumberFormatStrings = new String[]{"1000", "9999", "00012340", "500", "0", "-500", "+500"};
         for (String string : validNumberFormatStrings) {
-            assertThat(UserInputValidator.isUserInputValidNumberFormat(string)).isEqualTo(true);
+            assertThat(userInputValidator.isUserInputValidNumberFormat(string)).isEqualTo(true);
         }
     }
 
     @Test
     void isFirstLetterBetweenOneAndNineTest() {
+        UserInputValidator userInputValidator = new UserInputValidator();
+
         String[] validInputs = new String[]{"1000", "9999", "500", "500", "500"};
         for (String string : validInputs) {
-            assertThat(UserInputValidator.isFirstLetterBetweenOneAndNine(string)).isEqualTo(true);
+            assertThat(userInputValidator.isFirstLetterBetweenOneAndNine(string)).isEqualTo(true);
         }
 
         String[] invalidInputs = new String[]{"0", "0100", "00000123", "+500", "-500"};
         for (String string : invalidInputs) {
-            assertThat(UserInputValidator.isFirstLetterBetweenOneAndNine(string)).isEqualTo(false);
+            assertThat(userInputValidator.isFirstLetterBetweenOneAndNine(string)).isEqualTo(false);
         }
     }
 
     @Test
     void isValueMoreThanOrEqualToOneThousandTest() {
-        int[] validValues = new int[] {1000, 2000, 3000, 4000, 5000};
+        UserInputValidator userInputValidator = new UserInputValidator();
+
+        int[] validValues = new int[]{1000, 2000, 3000, 4000, 5000};
         for (int value : validValues) {
-            assertThat(UserInputValidator.isValueMoreThanOrEqualToOneThousand(value)).isEqualTo(true);
+            assertThat(userInputValidator.isValueMoreThanOrEqualToOneThousand(value)).isEqualTo(true);
         }
 
-        int[] invalidValues = new int[] {-1000, 0, 500, 30};
+        int[] invalidValues = new int[]{-1000, 0, 500, 30};
         for (int value : invalidValues) {
-            assertThat(UserInputValidator.isValueMoreThanOrEqualToOneThousand(value)).isEqualTo(false);
+            assertThat(userInputValidator.isValueMoreThanOrEqualToOneThousand(value)).isEqualTo(false);
         }
     }
 
 
     @Test
     void isValueMultipleOfOneThousandTest() {
-        int[] validValues = new int[] {1000, 2000, 3000, 4000, 5000};
+        UserInputValidator userInputValidator = new UserInputValidator();
+
+        int[] validValues = new int[]{1000, 2000, 3000, 4000, 5000};
         for (int value : validValues) {
-            assertThat(UserInputValidator.isValueMultipleOfOneThousand(value)).isEqualTo(true);
+            assertThat(userInputValidator.isValueMultipleOfOneThousand(value)).isEqualTo(true);
         }
 
-        int[] invalidValues = new int[] {-1000, 0, 1001, 2002};
+        int[] invalidValues = new int[]{-1000, 0, 1001, 2002};
         for (int value : invalidValues) {
-            assertThat(UserInputValidator.isValueMultipleOfOneThousand(value)).isEqualTo(false);
+            assertThat(userInputValidator.isValueMultipleOfOneThousand(value)).isEqualTo(false);
         }
     }
 }
