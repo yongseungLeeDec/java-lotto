@@ -1,6 +1,9 @@
 package lotto.data;
 
 public class LottoResult {
+    private static final String DASH = " - ";
+    private static final String UNIT = "개";
+
     private final int lottosWonThree;
     private final int lottosWonFour;
     private final int lottosWonFive;
@@ -27,4 +30,21 @@ public class LottoResult {
         return prize;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(WinningResult.THREE.getDescription())
+                .append(DASH).append(lottosWonThree).append(UNIT).append(System.lineSeparator());
+        stringBuilder.append(WinningResult.FOUR.getDescription())
+                .append(DASH).append(lottosWonFour).append(UNIT).append(System.lineSeparator());
+        stringBuilder.append(WinningResult.FIVE.getDescription())
+                .append(DASH).append(lottosWonFive).append(UNIT).append(System.lineSeparator());
+        stringBuilder.append(WinningResult.FIVE_AND_BONUS.getDescription())
+                .append(DASH).append(lottosWonFiveAndBonus).append(UNIT).append(System.lineSeparator());
+        stringBuilder.append(WinningResult.SIX.getDescription())
+                .append(DASH).append(lottosWonSix).append(UNIT);
+
+        return stringBuilder.toString();
+    }
 }
