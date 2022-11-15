@@ -7,12 +7,13 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class PurchaseResultProcessor {
+    private static final int LOTTO_UNIT_PRICE = 1000;
     private static final int LOTTO_START_NUMBER_INCLUSIVE = 1;
     private static final int LOTTO_END_NUMBER_INCLUSIVE = 45;
     private static final int NUMBER_OF_PICKED_NUMBERS = 6;
 
     public int getPurchasedAmount(int totalPrice) {
-        return totalPrice / 1000;
+        return totalPrice / LOTTO_UNIT_PRICE;
     }
 
     public List<Lotto> getLottos(int purchasedAmount) {
