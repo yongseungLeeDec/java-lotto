@@ -27,6 +27,14 @@ public class LottoRunner {
 
     }
 
+    public int getTotalPrice() {
+        this.userInputGetter.promptUserForTotalPrice();
+        String userInput = this.userInputGetter.getTotalPriceFromUser();
+        throwExceptionIfUserInputTotalPriceNotValid(userInput);
+
+        return Integer.parseInt(userInput);
+    }
+
     public void throwExceptionIfUserInputTotalPriceNotValid(String userInput) {
         UserInputValidationCode result = this.userInputValidator.getUserTotalPriceInputValidationCode(userInput);
         if (result != UserInputValidationCode.VALID_NUMBER) {
