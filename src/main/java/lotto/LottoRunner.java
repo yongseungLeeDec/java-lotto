@@ -4,13 +4,11 @@ public class LottoRunner {
     private static LottoRunner lottoRunner;
 
     private final UserInputGetter userInputGetter;
-    private final UserInputValidator userInputValidator;
     private final PurchaseResultDemonstrator purchaseResultDemonstrator;
     private final PurchaseResultProcessor purchaseResultProcessor;
 
     private LottoRunner() {
         this.userInputGetter = new UserInputGetter();
-        this.userInputValidator = new UserInputValidator();
         this.purchaseResultDemonstrator = new PurchaseResultDemonstrator();
         this.purchaseResultProcessor = new PurchaseResultProcessor();
     }
@@ -23,24 +21,13 @@ public class LottoRunner {
     }
 
     public void run() {
-        int totalPrice = getTotalPriceFromUser();
+        int totalPrice = this.userInputGetter.getTotalPriceFromUser();
         System.out.println();
+
         PurchaseResult purchaseResult = this.purchaseResultProcessor.getPurchaseResult(totalPrice);
         this.purchaseResultDemonstrator.printPurchaseResult(purchaseResult);
+        System.out.println();
     }
 
-    public int getTotalPriceFromUser() {
-        this.userInputGetter.promptUserForTotalPrice();
-        String userInput = this.userInputGetter.getTotalPriceFromUser();
-        throwExceptionIfUserInputTotalPriceNotValid(userInput);
 
-        return Integer.parseInt(userInput);
-    }
-
-    public void throwExceptionIfUserInputTotalPriceNotValid(String userInput) {
-        UserInputValidationCode result = this.userInputValidator.getUserTotalPriceInputValidationCode(userInput);
-        if (result != UserInputValidationCode.VALID_NUMBER) {
-            throw new IllegalArgumentException(result.getErrorMessage());
-        }
-    }
 }
