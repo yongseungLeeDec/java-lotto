@@ -25,6 +25,9 @@ public class LottoRunner {
 
     public void run() {
         int totalPrice = getTotalPriceFromUser();
+        System.out.println();
+        PurchaseResult purchaseResult = this.purchaseResultProcessor.getPurchaseResult(totalPrice);
+        this.purchaseResultDemonstrator.printPurchaseResult(purchaseResult);
     }
 
     public int getTotalPriceFromUser() {
