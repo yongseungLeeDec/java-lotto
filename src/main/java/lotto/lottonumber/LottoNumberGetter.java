@@ -1,6 +1,8 @@
 package lotto.lottonumber;
 
 
+import lotto.data.Lotto;
+import lotto.data.LottoNumber;
 import lotto.lottonumber.bonusnumber.BonusNumberValidationCode;
 import lotto.lottonumber.bonusnumber.BonusNumberValidator;
 import lotto.lottonumber.winningnumber.WinningNumberValidationCode;
@@ -9,6 +11,7 @@ import lotto.lottonumber.winningnumber.WinningNumberValidator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -22,6 +25,22 @@ public class LottoNumberGetter {
     public LottoNumberGetter() {
         this.winningNumberValidator = new WinningNumberValidator();
         this.bonusNumberValidator = new BonusNumberValidator();
+    }
+
+    public LottoNumber getLottoNumber() {
+        printPromptForWinningNumbers();
+        List<String> tokensForWinningNumbers = tokenizeWinningNumberInput(getWinningNumbersFromConsole());
+        throwExceptionIfNotValidWinningNumbers(tokensForWinningNumbers);
+        List<Integer> winningNumbers = convertTokensToWinningNumbers(tokensForWinningNumbers);
+
+        System.out.println();
+
+        printPromptForBonusNumber();
+        String tokenForBonusNumber = getBonusNumberFromConsole();
+        throwExceptionIfNotValidBonusNumber(tokenForBonusNumber, winningNumbers);
+        int bonusNumber = Integer.parseInt(tokenForBonusNumber);
+
+        return new LottoNumber(new Lotto(winningNumbers), bonusNumber);
     }
 
     public void printPromptForWinningNumbers() {
@@ -63,5 +82,9 @@ public class LottoNumberGetter {
         if (result != BonusNumberValidationCode.VALID) {
             throw new IllegalArgumentException(result.getErrorMessage());
         }
+    }
+
+    private List<Integer> convertTokensToWinningNumbers(List<String> tokens) {
+        return tokens.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 }
