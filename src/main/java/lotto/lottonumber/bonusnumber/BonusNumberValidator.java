@@ -10,4 +10,8 @@ public class BonusNumberValidator {
         }
         return true;
     }
+
+    public boolean isNumberFormatValid(String token) {
+        return token.charAt(0) >= '1' && token.charAt(0) <= '9';
+    }
 }
