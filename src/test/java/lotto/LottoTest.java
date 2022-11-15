@@ -21,9 +21,24 @@ class LottoTest {
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 생성에 사용되는 번호가 정확히 6개인지 확인한다")
+    @Test
+    void isNumbersSizeExactlySix() {
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 5));
+        assertThat(Lotto.isNumbersSizeExactlySix(numbers)).isEqualTo(true);
+
+        numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5));
+        assertThat(Lotto.isNumbersSizeExactlySix(numbers)).isEqualTo(false);
+
+        numbers = new ArrayList<>(List.of(1000, 1, 2, 3, 4, 100));
+        assertThat(Lotto.isNumbersSizeExactlySix(numbers)).isEqualTo(true);
+
+        numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 45, 7));
+        assertThat(Lotto.isNumbersSizeExactlySix(numbers)).isEqualTo(false);
     }
 
     @DisplayName("사용자가 올바른 형식의 구입 금액을 입력할 경우, 이를 정수로 변환한 값을 반환한다.")
