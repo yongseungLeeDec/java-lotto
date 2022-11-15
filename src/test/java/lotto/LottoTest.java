@@ -43,6 +43,18 @@ class LottoTest {
                 .isEqualTo(UserInputValidationCode.INVALID_NUMBER);
     }
 
+    @DisplayName("입력된 구입 금액 문자열이 올바르지 않을 경우 예외가 발생한다.")
+    @Test
+    void userInputValidator_ExceptionTest() {
+        LottoRunner lottoRunner = LottoRunner.getLottoRunner();
+        assertThatThrownBy(() -> lottoRunner.throwExceptionIfUserInputTotalPriceNotValid("total price"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> lottoRunner.throwExceptionIfUserInputTotalPriceNotValid("+000"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> lottoRunner.throwExceptionIfUserInputTotalPriceNotValid("01000"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Test
     void isUserInputValidNumberFormatTest() {
         UserInputValidator userInputValidator = new UserInputValidator();
